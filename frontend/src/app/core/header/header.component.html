@@ -1,7 +1,16 @@
 <header>
   <article class="header-article">
-    <button class="header-article-menu">
-      <fa-icon class="fas fa-bars"[icon]="fabars"></fa-icon>
+    <nav class="header-navigation" [ngStyle]="{'width': isShow ? '250px' : '0px'}">
+      <h1>Menu</h1>
+      <a href="#">Home</a>
+      <a href="#">Login</a>
+      <a href="#"><fa-icon class="fas fa-plus"[icon]="faPlus"></fa-icon> Post a car</a>
+      <button class="header-navigation-closeBtn" (click)="isShow = false">
+        &times;
+      </button>
+    </nav>
+    <button class="header-article-menu" (click)="isShow = true">
+      <fa-icon class="fas fa-bars" [icon]="fabars"></fa-icon>
     </button>
     <h1 class="header-article-logo">CARS.com</h1>
   </article>

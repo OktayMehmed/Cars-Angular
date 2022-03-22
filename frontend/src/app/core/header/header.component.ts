@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {faBars} from '@fortawesome/free-solid-svg-icons'
+import {faBars, faPlus} from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-header',
@@ -8,6 +8,13 @@ import {faBars} from '@fortawesome/free-solid-svg-icons'
 })
 export class HeaderComponent  {
   fabars = faBars
-  constructor() { }
+  faPlus = faPlus
+  isShow = false
+  constructor() {}
+
+  hadnleThis(){
+    this.isShow = true
+    console.log(this.isShow)
+  }
 
 }
