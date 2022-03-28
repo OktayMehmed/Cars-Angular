@@ -2,7 +2,7 @@
   <article class="header-article">
     <nav class="header-navigation" [ngStyle]="{'width': isShow ? '250px' : '0px'}">
       <h1>Menu</h1>
-      <a href="#">Home</a>
+      <a routerLink="/home">Home</a>
       <a href="#">Login</a>
       <a href="#"><fa-icon class="fas fa-plus"[icon]="faPlus"></fa-icon> Post a car</a>
       <button class="header-navigation-closeBtn" (click)="isShow = false">

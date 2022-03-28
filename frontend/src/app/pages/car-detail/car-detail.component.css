@@ -1,0 +1,35 @@
+.car {
+  display: flex;
+  padding: 80px 170px;
+}
+
+.car-info {
+  width: 600px;
+  position: relative;
+}
+
+.car-info-make-model {
+  font-size: 25px;
+  text-align: center;
+  margin-top: 0;
+  padding-bottom: 20px;
+  border-bottom:1px solid #8080807d;
+  width: 80%;
+}
+
+.car-info-power {
+  margin-bottom: 30px;
+}
+
+.car-info-desc {
+  border-top:1px solid #8080807d;
+  padding-top: 30px;
+  width: 80%;
+}
+
+.car-image {
+  width: 50%;
+  height: 30%;
+  box-shadow: 0px 0px 3px 1px black;
+  object-fit: cover;
+}

@@ -7,7 +7,7 @@
 
   <p class="each-car-price">${{ car.price }}</p>
 
-  <a class="each-car-make-link" href="">
+  <a class="each-car-make-link" [routerLink]="['/car', car._id]">
     <h2 class="each-car-make">{{ car.make }} {{ car.model }}</h2>
   </a>
 

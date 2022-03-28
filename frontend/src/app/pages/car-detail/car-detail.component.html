@@ -1,1 +1,21 @@
-<p>car-detail works!</p>
+<section class="car">
+  <article class="car-info">
+    <h1 class="car-info-make-model">{{car.make}} {{car.model}}</h1>
+
+    <p class="car-info-price"><strong>Price:</strong> ${{car.price}}</p>
+
+    <p class="car-info-year">
+      <strong>Year: </strong>
+      {{car.year}}
+    </p>
+    <p class="car-info-fuel">
+      <strong>Fuel: </strong>
+      {{car.fuel}}
+    </p>
+    <p class="car-info-color"><strong>Color:</strong> {{car.color}}</p>
+    <p class="car-info-power"><strong>Power:</strong> {{car.power}} hp</p>
+    <p class="car-info-desc">{{car.description}}</p>
+  </article>
+
+  <img class="car-image" src="{{car.image}}" alt="{{car.make}}" />
+</section>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ICar } from 'src/app/core/interfaces';
+import { cars } from 'src/cars';
 
 @Component({
   selector: 'app-car-detail',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarDetailComponent implements OnInit {
 
-  constructor() { }
+  car: any
+
+  constructor(private activatedRoute: ActivatedRoute) { 
+    
+  }
 
   ngOnInit(): void {
+    const id = this.activatedRoute.snapshot.params['id'];
+    this.car = cars.find((c) => c._id == id);
+
   }
 
 }
