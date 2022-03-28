@@ -1,6 +1,9 @@
 const express = require('express');
-const cors = require("cors")
-const cars = require("./data/cars")
+const cors = require("cors");
+const dotenv = require("dotenv");
+const cars = require("./data/cars");
+
+dotenv.config();
 
 const app = express();
 app.use(cors())
@@ -19,4 +22,6 @@ app.get("/api/cars/:id", (req, res) => {
   res.json(car)
 })
 
-app.listen(8000, console.log("Server is ready"))
+const PORT = process.env.PORT || 8000;
+
+app.listen(PORT, console.log(`Server is listening on PORT ${PORT}`))
