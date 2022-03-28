@@ -1,4 +1,4 @@
-export interface ICars {
+export interface ICar {
     _id: number,
     make: string,
     model: string,

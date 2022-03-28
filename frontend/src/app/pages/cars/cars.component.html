@@ -1,0 +1,17 @@
+<article class="each-car">
+  <div class="each-car-container">
+    <a [routerLink]="['/car', car._id]">
+      <img class="each-car-image" src="{{ car.image }}" alt="{{ car.make }}" />
+    </a>
+  </div>
+
+  <p class="each-car-price">${{ car.price }}</p>
+
+  <a class="each-car-make-link" href="">
+    <h2 class="each-car-make">{{ car.make }} {{ car.model }}</h2>
+  </a>
+
+  <p class="each-car-year-fuel">{{ car.year }}, {{ car.fuel }}</p>
+
+  <p class="each-car-description">{{ car.description }}</p>
+</article>

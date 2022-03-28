@@ -6,17 +6,17 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { CarsComponent } from './cars/cars.component';
+import { PagesModule } from './pages/pages.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    CarsComponent
   ],
   imports: [
     BrowserModule,
+    PagesModule,
     AppRoutingModule,
     FontAwesomeModule
   ],
