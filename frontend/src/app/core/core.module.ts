@@ -5,6 +5,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
+import { CarService } from './services/car.service';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,9 @@ import { RouterModule } from '@angular/router';
   exports: [
     HeaderComponent,
     FooterComponent
+  ],
+  providers: [
+    CarService
   ]
 })
 export class CoreModule { }

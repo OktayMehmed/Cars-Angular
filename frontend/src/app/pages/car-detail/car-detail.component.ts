@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ICar } from 'src/app/core/interfaces';
+import { CarService } from 'src/app/core/services/car.service';
 import { cars } from 'src/cars';
 
 @Component({
@@ -10,16 +11,15 @@ import { cars } from 'src/cars';
 })
 export class CarDetailComponent implements OnInit {
 
-  car: any
+  car!: ICar
 
-  constructor(private activatedRoute: ActivatedRoute) { 
+  constructor(private activatedRoute: ActivatedRoute, private carService: CarService) { 
     
   }
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params['id'];
-    this.car = cars.find((c) => c._id == id);
-
+    this.carService.loadCarById(id).subscribe(car => this.car = car)
   }
 
 }
