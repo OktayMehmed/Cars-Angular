@@ -12,14 +12,25 @@ import { cars } from 'src/cars';
 export class CarDetailComponent implements OnInit {
 
   car!: ICar
+  error: string = ""
+  loader: boolean = true
 
-  constructor(private activatedRoute: ActivatedRoute, private carService: CarService) { 
-    
+  constructor(private activatedRoute: ActivatedRoute, private carService: CarService) {
+
   }
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params['id'];
-    this.carService.loadCarById(id).subscribe(car => this.car = car)
+    this.carService.loadCarById(id).subscribe({
+      next: (car) => {
+        this.car = car
+        this.loader = false
+      },
+      error: (e) => {
+        this.error = e.error.message
+        this.loader = false
+      }
+    })
   }
 
 }

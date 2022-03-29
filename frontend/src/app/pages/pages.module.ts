@@ -4,6 +4,7 @@ import { CarsComponent } from './cars/cars.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CarDetailComponent } from './car-detail/car-detail.component';
 import { PagesRoutingModule } from './pages-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -15,6 +16,7 @@ import { PagesRoutingModule } from './pages-routing.module';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     PagesRoutingModule
   ]
 })

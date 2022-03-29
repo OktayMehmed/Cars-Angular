@@ -1,3 +1,5 @@
+<app-loader *ngIf="loader"></app-loader>
+
 <section class="all-cars">
-  <app-cars *ngFor="let car of cars"  [car]="car"></app-cars>
+  <app-cars *ngFor="let car of cars" [car]="car"></app-cars>
 </section>

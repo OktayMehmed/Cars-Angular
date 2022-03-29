@@ -10,12 +10,14 @@ import { CarService } from 'src/app/core/services/car.service';
 export class HomePageComponent implements OnInit {
 
   cars: ICar[] = [];
+  loader: boolean = true;
 
   constructor(private carsService: CarService) { }
 
   ngOnInit(): void {
     this.carsService.loadCarsList().subscribe(carsList => {
-      this.cars = carsList
+      this.cars = carsList;
+      this.loader = false;
     })
   }
 

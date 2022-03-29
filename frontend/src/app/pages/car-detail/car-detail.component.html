@@ -1,4 +1,6 @@
-<section class="car" *ngIf="!!car; else loadingIndicator">
+<app-error-message *ngIf="!!error" [error]="error"></app-error-message>
+
+<section class="car" *ngIf="!!car">
   <article class="car-info">
     <h1 class="car-info-make-model">{{car.make}} {{car.model}}</h1>
 
@@ -20,6 +22,4 @@
   <img class="car-image" src="{{car.image}}" alt="{{car.make}}" />
 </section>
 
-<ng-template #loadingIndicator>
-  Loading...
-</ng-template>
+<app-loader *ngIf="loader"></app-loader>
