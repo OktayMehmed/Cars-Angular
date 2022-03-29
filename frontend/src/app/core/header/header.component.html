@@ -3,8 +3,10 @@
     <nav class="header-navigation" [ngStyle]="{'width': isShow ? '250px' : '0px'}">
       <h1>Menu</h1>
       <a routerLink="/home">Home</a>
-      <a href="#">Login</a>
+      <a href="#"><fa-icon class="fas fa-sign-in-alt" [icon]="faSignInAlt"></fa-icon> Login</a>
+      <a href="#"><fa-icon class="fas fa-user" [icon]="faUser"></fa-icon> Profile</a>
       <a href="#"><fa-icon class="fas fa-plus"[icon]="faPlus"></fa-icon> Post a car</a>
+      <a href="#"><fa-icon class="fas fa-car"[icon]="faCar"></fa-icon> My Cars</a>
       <button class="header-navigation-closeBtn" (click)="isShow = false">
         &times;
       </button>
