@@ -20,4 +20,16 @@ const authUser = (req, res) => {
     }).catch(() => res.status(401).json({ message: "Invalid email or password" }))
 }
 
-module.exports = { authUser }
+const getUserProfile = (req, res) => {
+  User.findById(req.user._id)
+    .then((user) => {
+      res.json({
+        _id: user._id,
+        email: user.email,
+        name: user.name,
+      })
+    })
+    .catch(() => res.status(404).json({ message: "User not found" }))
+}
+
+module.exports = { authUser, getUserProfile }
