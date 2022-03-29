@@ -1,16 +1,8 @@
 const express = require('express');
-const Cars = require('../models/Cars.js')
-
 const router = express.Router()
+const { getAllCars, getCarById } = require('../controllers/Cars')
 
-router.get("/", (req, res) => {
-  Cars.find({}).then(cars => res.json(cars))
-})
-
-router.get("/:id", (req, res) => {
-  Cars.findById(req.params.id)
-    .then(car => res.json(car))
-    .catch(() => res.status(404).json({ message: "Car not found!" }))
-})
+router.route("/").get(getAllCars);
+router.route("/:id").get(getCarById);
 
 module.exports = router
