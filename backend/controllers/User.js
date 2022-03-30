@@ -32,4 +32,29 @@ const getUserProfile = (req, res) => {
     .catch(() => res.status(404).json({ message: "User not found" }))
 }
 
-module.exports = { authUser, getUserProfile }
+const registerUser = (req, res) => {
+  const { email, name, password } = req.body
+
+  User.findOne({ email }).then(existUser => {
+    if (existUser) {
+      res.status(400).json({ message: "User already exist" });
+      return;
+    }
+  })
+
+  User.create({
+    email,
+    name,
+    password
+  })
+    .then(createdUser => {
+      res.json({
+        _id: createdUser._id,
+        name: createdUser.name,
+        email: createdUser.email,
+        token: generateToken(createdUser._id)
+      })
+    }).catch(() => res.status(400).json({ message: "Invalid user data" }));
+}
+
+module.exports = { authUser, getUserProfile, registerUser }
