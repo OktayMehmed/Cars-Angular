@@ -1,0 +1,40 @@
+<app-error-message *ngIf="!!errorMessage" [error]="errorMessage"></app-error-message>
+
+<section class="user-form-container">
+  <h2 class="user-form-title">Sign in</h2>
+  <form  class="user-form" [formGroup]="loginFormGroup" (ngSubmit)="submitLogin()">
+    <article class="user-form-email">
+      <input formControlName="email" type="text" name="email" id="email" placeholder="E-mail" />
+
+      <ng-container *ngIf="loginFormGroup.controls['email'].touched && loginFormGroup.controls['email'].invalid">
+         <p *ngIf="loginFormGroup.controls['email'].errors" class="error">
+           Email is required!
+         </p>
+      </ng-container>
+    </article>
+    <article class="user-form-password">
+      <input formControlName="password" type="password" name="password" id="password" placeholder="Password" />
+
+      <ng-container *ngIf="loginFormGroup.controls['password'].touched && loginFormGroup.controls['password'].invalid">
+        <p *ngIf="loginFormGroup.controls['password'].errors?.required" class="error">
+          Password is required!
+        </p>
+
+        <p *ngIf="loginFormGroup.controls['password'].errors?.minlength" class="error">
+          Password must be at least 4 characters!
+        </p>
+     </ng-container>
+    </article>
+    <button [ngClass]="loginFormGroup.invalid ? 'user-form-btn-disabled' : 'user-form-btn'" 
+    [disabled]="loginFormGroup.invalid" 
+    class="user-form-btn">Sign In
+    </button>
+  </form>
+  <p class="user-login-register">
+    Don't have an account yet, click
+    <a href="#" class="link-login-register">
+      Sign up
+    </a>
+    .
+  </p>
+</section>

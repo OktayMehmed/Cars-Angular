@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { CarService } from './services/car.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CarService } from './services/car.service';
     FooterComponent
   ],
   providers: [
-    CarService
+    CarService,
+    UserService
   ]
 })
 export class CoreModule { }
