@@ -1,0 +1,42 @@
+<section class="user-register-form-container" *ngIf="!!currentUser">
+  <h2 class="user-form-title">User Profile</h2>
+  <form  class="user-form">
+    <article class="user-form-name">
+      <input
+        type="text"
+        name="name"
+        id="name"
+        placeholder="Username"
+        [value]="currentUser.name"
+      />
+    </article>
+    <article class="user-form-email">
+      <input
+        type="text"
+        name="email"
+        id="email"
+        placeholder="E-mail"
+        [value]="currentUser.email"
+      />
+    </article>
+    <article class="user-form-password">
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Password"
+      />
+    </article>
+    <article class="user-form-password">
+      <input
+        type="password"
+        name="confirmPassword"
+        id="confirmPassword"
+        placeholder="Confirm Password"
+      />
+    </article>
+    <button class="user-form-btn">Update</button>
+  </form>
+</section>
+
+<app-loader *ngIf="loader"></app-loader>
