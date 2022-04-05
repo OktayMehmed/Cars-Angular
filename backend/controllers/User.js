@@ -32,6 +32,28 @@ const getUserProfile = (req, res) => {
     .catch(() => res.status(404).json({ message: "User not found" }))
 }
 
+const updateUserProfile = (req, res) => {
+  User.findById(req.user._id)
+    .then(user => {
+      user.name = req.body.name || user.name;
+      user.email = req.body.email || user.email;
+      if (req.body.password) {
+        user.password = req.body.password
+      }
+
+
+      user.save().then(updatedUser => {
+        res.json({
+          _id: updatedUser._id,
+          name: updatedUser.name,
+          email: updatedUser.email,
+          token: generateToken(updatedUser._id)
+        })
+      })
+    })
+    .catch(() => res.status(404).json({ message: "User not found!" }))
+}
+
 const registerUser = (req, res) => {
   const { email, name, password } = req.body
 
@@ -57,4 +79,4 @@ const registerUser = (req, res) => {
     }).catch(() => res.status(400).json({ message: "Invalid user data" }));
 }
 
-module.exports = { authUser, getUserProfile, registerUser }
+module.exports = { authUser, getUserProfile, registerUser, updateUserProfile }
