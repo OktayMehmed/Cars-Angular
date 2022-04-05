@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
     this.userService.login(this.loginFormGroup.value).subscribe({
       next: user => {
         this.router.navigate(['/home'])
-        localStorage.setItem("userInfo", JSON.stringify(user))
       },
       error: err => this.errorMessage = err.error.message
     })

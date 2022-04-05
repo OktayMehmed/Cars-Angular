@@ -1,5 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import {faBars, faPlus, faSignInAlt, faUser, faCar} from '@fortawesome/free-solid-svg-icons'
+import {faBars, faPlus, faSignInAlt, faUser, faCar, faSignOutAlt} from '@fortawesome/free-solid-svg-icons'
 import { IUser } from '../interfaces';
 import { UserService } from '../services/user.service';
 
@@ -14,6 +14,7 @@ export class HeaderComponent implements OnChanges  {
   faSignInAlt = faSignInAlt
   faUser = faUser
   faCar = faCar
+  faSignOut = faSignOutAlt
   showNav = false
 
   get currentUser(): IUser {
@@ -28,6 +29,10 @@ export class HeaderComponent implements OnChanges  {
 
   hadnleThis(){
     this.showNav = true
+  }
+
+  logoutHandler() {
+    this.showNav = false;
   }
 
 }

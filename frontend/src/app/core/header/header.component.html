@@ -5,8 +5,13 @@
       [ngStyle]="{ width: showNav ? '250px' : '0px' }"
     >
       <h1>Menu</h1>
+      <a routerLink="/home" (click)="showNav = false">Home</a>
       <ng-container *ngIf="!!currentUser">
-        <a routerLink="/home" (click)="showNav = false">Home, {{ currentUser.name }}</a>
+        <p class="header-username">Hello, {{ currentUser.name }}</p>
+
+        <a routerLink="/home" (click)="logoutHandler()"
+          ><fa-icon class="fas fa-sign-out-alt" [icon]="faSignOut"></fa-icon> Logout</a
+        >
 
         <a href="#"
           ><fa-icon class="fas fa-user" [icon]="faUser"></fa-icon> Profile</a
@@ -20,8 +25,6 @@
       </ng-container>
 
       <ng-container *ngIf="!currentUser">
-        <a routerLink="/home" (click)="showNav = false">Home</a>
-
         <a routerLink="/login" (click)="showNav = false"
           ><fa-icon class="fas fa-sign-in-alt" [icon]="faSignInAlt"></fa-icon>
           Login</a
