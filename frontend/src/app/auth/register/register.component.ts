@@ -25,7 +25,6 @@ export class RegisterComponent implements OnInit {
       password: this.passwordControl,
       rePassword: new FormControl(null, [Validators.required, passwordMatch(this.passwordControl)])
     })
-
   })
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }

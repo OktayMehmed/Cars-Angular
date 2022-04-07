@@ -32,11 +32,25 @@
   padding: 10px;
   border-radius: 10px;
   border: none;
-  background: #ff7214;
+  background: #FF7214;
   color: white;
+  cursor: pointer;
 }
 
-.user-form-btn:hover {
-  cursor: pointer;
-  background: #ff7214b8;
+.user-form-btn-disabled {
+  width: 90%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #fbc19a;
+  color: white;
+  cursor: default;
+}
+
+.error {
+  text-align: left;
+  border-radius: 0.3em;
+  color: red;
+  margin: 0px 0px 15px 20px;
+  padding-top: 0;
 }

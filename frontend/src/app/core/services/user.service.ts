@@ -33,6 +33,11 @@ export class UserService {
       )
   }
 
+  logout(){
+    localStorage.removeItem('userInfo')
+    this.currentUser = { name: "", email: "", password: "", token: ""}
+  }
+
   getProfile(): Observable<IUser> {
 
     const token = this.currentUser.token;
@@ -42,5 +47,18 @@ export class UserService {
       'Authorization': `Bearer ${token}`
     })
     return this.httpClient.get<IUser>(`${environment.apiUrl}/users/profile`, {headers: headers})
+  }
+
+  updateProfile(userData: { name: string, email: string, password: string}): Observable<IUser> {
+    const token = this.currentUser.token;
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    })
+    return this.httpClient.put<IUser>(`${environment.apiUrl}/users/profile`, userData, {headers: headers})
+    .pipe(
+      tap(user => this.currentUser = user)
+    )
   }
 }

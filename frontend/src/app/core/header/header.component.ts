@@ -27,12 +27,9 @@ export class HeaderComponent implements OnChanges  {
     this.userService.currentUser;
   }
 
-  hadnleThis(){
-    this.showNav = true
-  }
 
   logoutHandler() {
-    this.showNav = false;
+    this.userService.logout();
   }
 
 }

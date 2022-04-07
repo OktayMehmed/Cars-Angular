@@ -1,41 +1,76 @@
 <section class="user-register-form-container" *ngIf="!!currentUser">
   <h2 class="user-form-title">User Profile</h2>
-  <form  class="user-form">
+  <form
+    [formGroup]="profileFormGroup"
+    class="user-form"
+    (ngSubmit)="submitProfile()"
+  >
     <article class="user-form-name">
       <input
         type="text"
         name="name"
         id="name"
         placeholder="Username"
-        [value]="currentUser.name"
+        formControlName="username"
       />
+
+      <ng-container *ngIf="profileFormGroup.controls['username'].touched && profileFormGroup.controls['username'].invalid">
+        <p *ngIf="profileFormGroup.controls['username'].errors?.required" class="error">
+          Username is required
+        </p>
+        <p *ngIf="profileFormGroup.controls['username'].errors?.minlength" class="error">
+          Username must be at least 5 characters!
+        </p>
+      </ng-container>
     </article>
     <article class="user-form-email">
       <input
         type="text"
         name="email"
         id="email"
+        formControlName="email"
         placeholder="E-mail"
-        [value]="currentUser.email"
       />
+
+      <ng-container *ngIf="profileFormGroup.controls['email'].touched && profileFormGroup.controls['email'].invalid">
+        <p *ngIf="profileFormGroup.controls['email'].errors?.required" class="error">
+          Email is required
+        </p>
+      </ng-container>
     </article>
-    <article class="user-form-password">
+    <article class="user-form-password" formGroupName="passwords">
       <input
+        formControlName="password"
         type="password"
         name="password"
         id="password"
-        placeholder="Password"
+        placeholder="New Password"
       />
-    </article>
-    <article class="user-form-password">
+
+      <ng-container *ngIf="passwordsGroup.controls['password'].touched && passwordsGroup.controls['password'].invalid">
+        <p *ngIf="passwordsGroup.controls['password'].errors?.required" class="error">
+          Password is required
+        </p>
+        <p *ngIf="passwordsGroup.controls['password'].errors?.minlength" class="error">
+          Password must be at least 4 characters!
+        </p>
+      </ng-container>
       <input
         type="password"
         name="confirmPassword"
+        formControlName="rePassword"
         id="confirmPassword"
-        placeholder="Confirm Password"
+        placeholder="Confirm New Password"
       />
+
+      <ng-container *ngIf="passwordsGroup.controls['rePassword'].touched && passwordsGroup.controls['rePassword'].invalid">
+        <p *ngIf="passwordsGroup.controls['rePassword'].errors?.passwordMissMatch" class="error">
+          Password does not match!
+        </p>
+      </ng-container>
     </article>
-    <button class="user-form-btn">Update</button>
+    <button [ngClass]=" profileFormGroup.invalid ? 'user-form-btn-disabled' : 'user-form-btn'"
+    [disabled]="profileFormGroup.invalid" class="user-form-btn">Update</button>
   </form>
 </section>
 

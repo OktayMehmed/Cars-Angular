@@ -6,7 +6,7 @@
     >
       <h1>Menu</h1>
       <a routerLink="/home" (click)="showNav = false">Home</a>
-      <ng-container *ngIf="!!currentUser">
+      <ng-container *ngIf="currentUser">
         <p class="header-username">Hello, {{ currentUser.name }}</p>
 
         <a routerLink="/home" (click)="logoutHandler()"
@@ -24,13 +24,11 @@
         >
       </ng-container>
 
-      <ng-container *ngIf="!currentUser">
         <a routerLink="/login" (click)="showNav = false"
           ><fa-icon class="fas fa-sign-in-alt" [icon]="faSignInAlt"></fa-icon>
           Login</a
         >
-      </ng-container>
-
+      
       <button class="header-navigation-closeBtn" (click)="showNav = false">
         &times;
       </button>
