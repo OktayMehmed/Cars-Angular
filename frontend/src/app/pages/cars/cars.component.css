@@ -29,7 +29,7 @@
 }
 
 .each-car-make {
-  font-size: 17px;
+  font-size: 14px;
   margin: 0;
   padding: 12px 10px;
   border-bottom: 1px solid #aaaaaa;
@@ -45,7 +45,7 @@
   position: absolute;
   padding: 5px;
   right: 0;
-  top: 115px;
+  top: 117px;
 }
 
 .each-car-year-fuel {

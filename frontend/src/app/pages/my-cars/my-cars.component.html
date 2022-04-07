@@ -1,0 +1,31 @@
+<app-loader *ngIf="loader; else container"></app-loader>
+
+<ng-template #container>
+  <section class="my-cars" *ngIf="cars.length > 0; else noCars">
+    <article class="my-car" *ngFor="let car of cars">
+      <img class="my-car-img" src="{{ car.image }}" alt="{{ car.make }}" />
+
+      <article class="my-car-info">
+        <h1 class="my-car-title">{{ car.make }} {{ car.model }}</h1>
+        <article class="my-car-desc">
+          <p>Fuel: {{ car.fuel }}</p>
+          <p>Color: {{ car.color }}</p>
+          <p>Year: {{ car.year }}</p>
+        </article>
+
+        <p class="my-car-price">${{ car.price }}</p>
+
+        <article class="my-car-btn">
+          <a href="#">
+            <i class="fas fa-edit"></i>
+          </a>
+          <button><i class="fas fa-trash"></i></button>
+        </article>
+      </article>
+    </article>
+  </section>
+
+  <ng-template #noCars>
+    <h2 class="no-cars">No Cars</h2>
+  </ng-template>
+</ng-template>

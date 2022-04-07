@@ -10,22 +10,22 @@
         <p class="header-username">Hello, {{ currentUser.name }}</p>
 
         <a routerLink="/home" (click)="logoutHandler()"
-          ><fa-icon class="fas fa-sign-out-alt" [icon]="faSignOut"></fa-icon> Logout</a
+          ><i class="fas fa-sign-out-alt"></i> Logout</a
         >
 
         <a routerLink="/profile" (click)="showNav = false"
-          ><fa-icon class="fas fa-user" [icon]="faUser"></fa-icon> Profile</a
+          ><i class="fas fa-user"></i> Profile</a
         >
         <a href="#"
-          ><fa-icon class="fas fa-plus" [icon]="faPlus"></fa-icon> Post a car</a
+          ><i class="fas fa-plus"></i> Post a car</a
         >
-        <a href="#"
-          ><fa-icon class="fas fa-car" [icon]="faCar"></fa-icon> My Cars</a
+        <a routerLink="/mycars" (click)="showNav = false"
+          ><i class="fas fa-car"></i> My Cars</a
         >
       </ng-container>
 
         <a routerLink="/login" (click)="showNav = false"
-          ><fa-icon class="fas fa-sign-in-alt" [icon]="faSignInAlt"></fa-icon>
+          ><i class="fas fa-sign-in-alt"></i>
           Login</a
         >
       
@@ -34,7 +34,7 @@
       </button>
     </nav>
     <button class="header-article-menu" (click)="showNav = true">
-      <fa-icon class="fas fa-bars" [icon]="fabars"></fa-icon>
+      <i class="fas fa-bars"></i>
     </button>
     <h1 routerLink="/home" class="header-article-logo">CARS.com</h1>
   </article>
