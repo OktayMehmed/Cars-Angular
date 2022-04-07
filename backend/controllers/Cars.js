@@ -10,4 +10,9 @@ const getCarById = (req, res) => {
   .catch(() => res.status(404).json({ message: "Car not found!"}))
 }
 
-module.exports = { getAllCars, getCarById }
+const getUserCars = (req, res) => {
+  Cars.find({user: req.user._id})
+  .then(cars => res.json(cars))
+}
+
+module.exports = { getAllCars, getCarById, getUserCars }
