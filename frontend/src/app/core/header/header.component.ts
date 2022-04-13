@@ -1,4 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { IUser } from '../interfaces';
 import { UserService } from '../services/user.service';
 
@@ -14,7 +15,8 @@ export class HeaderComponent implements OnChanges  {
     return this.userService.currentUser;
   }
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {
+  }
 
   ngOnChanges(): void {
     this.userService.currentUser;
@@ -23,6 +25,8 @@ export class HeaderComponent implements OnChanges  {
 
   logoutHandler() {
     this.userService.logout();
+    this.showNav = false
+    this.router.navigate(['/home'])
   }
 
 }

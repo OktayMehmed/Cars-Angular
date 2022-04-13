@@ -6,29 +6,28 @@
     >
       <h1>Menu</h1>
       <a routerLink="/home" (click)="showNav = false">Home</a>
-      <ng-container *ngIf="currentUser">
+      <ng-container *ngIf="currentUser; else loginTemplate">
         <p class="header-username">Hello, {{ currentUser.name }}</p>
 
-        <a routerLink="/home" (click)="logoutHandler()"
+        <a href="javascript:void(0)" (click)="logoutHandler()"
           ><i class="fas fa-sign-out-alt"></i> Logout</a
         >
 
         <a routerLink="/profile" (click)="showNav = false"
           ><i class="fas fa-user"></i> Profile</a
         >
-        <a href="#"
-          ><i class="fas fa-plus"></i> Post a car</a
-        >
+        <a href="#"><i class="fas fa-plus"></i> Post a car</a>
         <a routerLink="/mycars" (click)="showNav = false"
           ><i class="fas fa-car"></i> My Cars</a
         >
       </ng-container>
 
+      <ng-template #loginTemplate>
         <a routerLink="/login" (click)="showNav = false"
-          ><i class="fas fa-sign-in-alt"></i>
-          Login</a
+          ><i class="fas fa-sign-in-alt"></i> Login</a
         >
-      
+      </ng-template>
+
       <button class="header-navigation-closeBtn" (click)="showNav = false">
         &times;
       </button>

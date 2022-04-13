@@ -9,7 +9,7 @@ import { IUser } from '../interfaces';
 })
 export class UserService {
 
-  currentUser: IUser = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')!) : "";
+  currentUser: any = JSON.parse(localStorage.getItem('userInfo')!);
 
   get isLogged() {
     return !!this.currentUser;
@@ -33,9 +33,9 @@ export class UserService {
       )
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem('userInfo')
-    this.currentUser = { name: "", email: "", password: "", token: ""}
+    this.currentUser = undefined;
   }
 
   getProfile(): Observable<IUser> {
@@ -46,19 +46,19 @@ export class UserService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     })
-    return this.httpClient.get<IUser>(`${environment.apiUrl}/users/profile`, {headers: headers})
+    return this.httpClient.get<IUser>(`${environment.apiUrl}/users/profile`, { headers: headers })
   }
 
-  updateProfile(userData: { name: string, email: string, password: string}): Observable<IUser> {
+  updateProfile(userData: { name: string, email: string, password: string }): Observable<IUser> {
     const token = this.currentUser.token;
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     })
-    return this.httpClient.put<IUser>(`${environment.apiUrl}/users/profile`, userData, {headers: headers})
-    .pipe(
-      tap(user => this.currentUser = user)
-    )
+    return this.httpClient.put<IUser>(`${environment.apiUrl}/users/profile`, userData, { headers: headers })
+      .pipe(
+        tap(user => this.currentUser = user)
+      )
   }
 }
