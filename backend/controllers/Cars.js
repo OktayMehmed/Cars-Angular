@@ -36,4 +36,13 @@ const createCar = (req, res) => {
     .catch(() => res.status(400).json({ message: "Please enter all fields" }))
 }
 
-module.exports = { getAllCars, getCarById, getUserCars, createCar }
+const deleteCar = (req, res) => {
+  Cars.findById(req.params.id)
+    .then((car) => {
+      car.remove();
+      res.json({ message: "Car was been deleted" })
+    })
+    .catch(() => res.status(404).json({ message: "Car not found" }));
+}
+
+module.exports = { getAllCars, getCarById, getUserCars, createCar, deleteCar }
