@@ -32,4 +32,26 @@ export class CarService {
 
     return this.http.get<ICar[]>(`${apiUrl}/cars/mycars`, { headers: headers })
   }
+
+
+  createCar(car: {
+    make: string,
+    model: string,
+    image: string,
+    price: number,
+    year: number,
+    fuel: string,
+    color: string,
+    power: number,
+    description: string
+  }): Observable<ICar> {
+    const token = this.userService.currentUser.token;
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    })
+
+    return this.http.post<ICar>(`${apiUrl}/cars`, car, { headers: headers })
+  }
 }
