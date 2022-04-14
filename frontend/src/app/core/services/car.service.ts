@@ -59,7 +59,6 @@ export class CarService {
     const token = this.userService.currentUser.token;
 
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     })
 
