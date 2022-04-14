@@ -54,4 +54,15 @@ export class CarService {
 
     return this.http.post<ICar>(`${apiUrl}/cars`, car, { headers: headers })
   }
+
+  deleteCar(id: string): Observable<ICar> {
+    const token = this.userService.currentUser.token;
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    })
+
+    return this.http.delete<ICar>(`${apiUrl}/cars/${id}`, { headers: headers })
+  }
 }
