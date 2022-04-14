@@ -6,6 +6,8 @@ import { CarDetailComponent } from './car-detail/car-detail.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { MyCarsComponent } from './my-cars/my-cars.component';
+import { PostCarComponent } from './post-car/post-car.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -14,12 +16,14 @@ import { MyCarsComponent } from './my-cars/my-cars.component';
     CarsComponent,
     HomePageComponent,
     CarDetailComponent,
-    MyCarsComponent
+    MyCarsComponent,
+    PostCarComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class PagesModule { }

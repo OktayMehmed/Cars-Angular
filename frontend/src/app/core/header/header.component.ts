@@ -8,7 +8,7 @@ import { UserService } from '../services/user.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnChanges  {
+export class HeaderComponent {
   showNav = false
 
   get currentUser(): IUser {
@@ -17,11 +17,6 @@ export class HeaderComponent implements OnChanges  {
 
   constructor(private userService: UserService, private router: Router) {
   }
-
-  ngOnChanges(): void {
-    this.userService.currentUser;
-  }
-
 
   logoutHandler() {
     this.userService.logout();

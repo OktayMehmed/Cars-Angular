@@ -12,11 +12,12 @@
         <a href="javascript:void(0)" (click)="logoutHandler()"
           ><i class="fas fa-sign-out-alt"></i> Logout</a
         >
-
         <a routerLink="/profile" (click)="showNav = false"
           ><i class="fas fa-user"></i> Profile</a
         >
-        <a href="#"><i class="fas fa-plus"></i> Post a car</a>
+        <a routerLink="/post-car" (click)="showNav = false"
+          ><i class="fas fa-plus"></i> Post a car</a
+        >
         <a routerLink="/mycars" (click)="showNav = false"
           ><i class="fas fa-car"></i> My Cars</a
         >
