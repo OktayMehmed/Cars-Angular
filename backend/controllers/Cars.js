@@ -45,4 +45,26 @@ const deleteCar = (req, res) => {
     .catch(() => res.status(404).json({ message: "Car not found" }));
 }
 
-module.exports = { getAllCars, getCarById, getUserCars, createCar, deleteCar }
+const updateCar = (req, res) => {
+  const { make, model, image, price, year, fuel, color, power, description } = req.body
+
+  Cars.findById(req.params.id)
+    .then((car) => {
+      car.make = make;
+      car.model = model;
+      car.image = image;
+      car.price = price;
+      car.year = year;
+      car.fuel = fuel;
+      car.color = color;
+      car.power = power;
+      car.description = description;
+
+      car.save()
+        .then(updatedCar => res.json(updatedCar))
+        .catch((e) => console.error(e))
+    })
+    .catch(() => res.status(404).json({ message: "Car not found!" }))
+}
+
+module.exports = { getAllCars, getCarById, getUserCars, createCar, deleteCar, updateCar }
