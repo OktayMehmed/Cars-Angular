@@ -48,10 +48,19 @@
   justify-content: center;
 }
 
+.car-form-first {
+  width: 100%;
+}
+
+.car-form-two {
+  width: 100%;
+}
+
 .car-form input {
   margin-bottom: 15px;
   background: #f3f1f1;
   border: none;
+  width: 90%;
   padding: 10px;
   border-radius: 10px;
 }

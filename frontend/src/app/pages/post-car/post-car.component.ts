@@ -10,6 +10,8 @@ import { CarService } from 'src/app/core/services/car.service';
 })
 export class PostCarComponent {
 
+  fileImage: any
+
   postCarForm: FormGroup = this.formBuilder.group({
     make: new FormControl("Make", [Validators.required]),
     model: new FormControl(null, [Validators.required]),
@@ -24,9 +26,37 @@ export class PostCarComponent {
 
   constructor(private formBuilder: FormBuilder, private carService: CarService, private router: Router) { }
 
+  uploadImage(event: any) {
+    const file = event.target.files[0];
+
+    this.carService.imgUpload(file).subscribe({
+      next: (img) => {
+        this.fileImage = img
+      },
+      error: (e) => console.error(e)
+    })
+
+  }
+
   submitCar() {
-    this.carService.createCar(this.postCarForm.value).subscribe({
-      next: () => { this.router.navigate(['/home']) },
+
+
+    const { make, model, image, price, year, fuel, color, power, description } = this.postCarForm.value;
+
+    const body = {
+      make: make,
+      model: model,
+      image: this.fileImage,
+      price: price,
+      year: year,
+      fuel: fuel,
+      color: color,
+      power: power,
+      description: description
+    }
+    
+    this.carService.createCar(body).subscribe({
+      next: () => { this.router.navigate(['/mycars']) },
       error: (e) => console.log(e)
     })
   }

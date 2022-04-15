@@ -70,11 +70,17 @@
         </ng-container>
 
         <input
-          formControlName="image"
           type="text"
           name="image"
           id="image"
           placeholder="Image"
+        />
+        <input
+          type="file"
+          formControlName="image"
+          id="image-file"
+          placeholder="Image"
+          (change)="uploadImage($event)"
         />
 
         <ng-container

@@ -90,6 +90,6 @@ export class CarService {
     const formData = new FormData();
     formData.append("image", fileToUpload);
 
-    return this.http.post(`api/upload`, formData)
+    return this.http.post(`/api/upload`, formData)
   }
 }
