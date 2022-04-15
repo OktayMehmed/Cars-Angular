@@ -2,10 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { ICar } from '../interfaces';
-import { environment } from '../../../environments/environment'
 import { UserService } from './user.service';
 
-const apiUrl = environment.apiUrl
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +13,11 @@ export class CarService {
   constructor(private http: HttpClient, private userService: UserService) { }
 
   loadCarsList(): Observable<ICar[]> {
-    return this.http.get<ICar[]>(`${apiUrl}/cars`)
+    return this.http.get<ICar[]>(`api/cars`)
   }
 
   loadCarById(id: string): Observable<ICar> {
-    return this.http.get<ICar>(`${apiUrl}/cars/${id}`)
+    return this.http.get<ICar>(`api/cars/${id}`)
   }
 
   loadUserCars(): Observable<ICar[]> {
@@ -30,7 +28,7 @@ export class CarService {
       'Authorization': `Bearer ${token}`
     })
 
-    return this.http.get<ICar[]>(`${apiUrl}/cars/mycars`, { headers: headers })
+    return this.http.get<ICar[]>(`api/cars/mycars`, { headers: headers })
   }
 
 
@@ -52,7 +50,7 @@ export class CarService {
       'Authorization': `Bearer ${token}`
     })
 
-    return this.http.post<ICar>(`${apiUrl}/cars`, car, { headers: headers })
+    return this.http.post<ICar>(`api/cars`, car, { headers: headers })
   }
 
   deleteCar(id: string): Observable<ICar> {
@@ -62,7 +60,7 @@ export class CarService {
       'Authorization': `Bearer ${token}`
     })
 
-    return this.http.delete<ICar>(`${apiUrl}/cars/${id}`, { headers: headers })
+    return this.http.delete<ICar>(`api/cars/${id}`, { headers: headers })
   }
 
   updateCar(car: {
@@ -84,6 +82,14 @@ export class CarService {
       'Authorization': `Bearer ${token}`
     })
 
-    return this.http.put<ICar>(`${apiUrl}/cars/${id}`, car, { headers: headers })
+    return this.http.put<ICar>(`api/cars/${id}`, car, { headers: headers })
+  }
+
+  imgUpload(fileToUpload: any) {
+
+    const formData = new FormData();
+    formData.append("image", fileToUpload);
+
+    return this.http.post(`api/upload`, formData)
   }
 }

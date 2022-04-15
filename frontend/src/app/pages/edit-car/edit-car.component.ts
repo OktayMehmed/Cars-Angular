@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -21,7 +22,8 @@ export class EditCarComponent implements OnInit {
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private carService: CarService,
-    private router: Router) {
+    private router: Router,
+    private http: HttpClient) {
 
   }
 
@@ -48,6 +50,16 @@ export class EditCarComponent implements OnInit {
         this.loader = false
       }
     })
+  }
+
+  uploadImage(event: any) {
+    const file = event.target.files[0];
+
+    this.carService.imgUpload(file).subscribe({
+      next: (img) => this.editCarForm.value.image = img,
+      error: (e) => console.error(e)
+    })  
+
   }
 
   submitEdit() {

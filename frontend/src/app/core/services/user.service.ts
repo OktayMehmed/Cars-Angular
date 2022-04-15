@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { IUser } from '../interfaces';
 
 @Injectable({
@@ -18,7 +17,7 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
 
   login(userData: { email: string, password: string }): Observable<IUser> {
-    return this.httpClient.post<IUser>(`${environment.apiUrl}/users/login`, userData, { withCredentials: true })
+    return this.httpClient.post<IUser>(`/api/users/login`, userData)
       .pipe(
         tap(user => localStorage.setItem('userInfo', JSON.stringify(user))),
         tap(user => this.currentUser = user)
@@ -26,7 +25,7 @@ export class UserService {
   }
 
   register(userData: { name: string, email: string, password: string }): Observable<IUser> {
-    return this.httpClient.post<IUser>(`${environment.apiUrl}/users`, userData, { withCredentials: true })
+    return this.httpClient.post<IUser>(`/api/users`, userData)
       .pipe(
         tap(user => localStorage.setItem('userInfo', JSON.stringify(user))),
         tap(user => this.currentUser = user)
@@ -46,7 +45,7 @@ export class UserService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     })
-    return this.httpClient.get<IUser>(`${environment.apiUrl}/users/profile`, { headers: headers })
+    return this.httpClient.get<IUser>(`/api/users/profile`, { headers: headers })
   }
 
   updateProfile(userData: { name: string, email: string, password: string }): Observable<IUser> {
@@ -56,7 +55,7 @@ export class UserService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     })
-    return this.httpClient.put<IUser>(`${environment.apiUrl}/users/profile`, userData, { headers: headers })
+    return this.httpClient.put<IUser>(`/api/users/profile`, userData, { headers: headers })
       .pipe(
         tap(user => this.currentUser = user)
       )

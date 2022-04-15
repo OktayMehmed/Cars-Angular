@@ -66,6 +66,13 @@
             Image is required
           </p>
         </ng-container>
+
+        <input
+          type="file"
+          id="image-file"
+          placeholder="Image"
+          (change)="uploadImage($event)"
+        />
         <input
           formControlName="price"
           type="number"
