@@ -76,7 +76,7 @@ export class CarService {
     color: string,
     power: number,
     description: string
-  }): Observable<ICar> {
+  }, id: string): Observable<ICar> {
     const token = this.userService.currentUser.token;
 
     const headers = new HttpHeaders({
@@ -84,6 +84,6 @@ export class CarService {
       'Authorization': `Bearer ${token}`
     })
 
-    return this.http.put<ICar>(`${apiUrl}/cars/${car._id}`, car, { headers: headers })
+    return this.http.put<ICar>(`${apiUrl}/cars/${id}`, car, { headers: headers })
   }
 }

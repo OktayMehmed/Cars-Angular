@@ -16,10 +16,12 @@
         <p class="my-car-price">${{ car.price }}</p>
 
         <article class="my-car-btn">
-          <a href="#">
+          <a [routerLink]="['/edit-car', car._id]">
             <i class="fas fa-edit"></i>
           </a>
-          <button (click)="deleteHandler(car._id)"><i class="fas fa-trash"></i></button>
+          <button (click)="deleteHandler(car._id)">
+            <i class="fas fa-trash"></i>
+          </button>
         </article>
       </article>
     </article>

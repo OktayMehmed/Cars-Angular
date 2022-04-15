@@ -1,6 +1,6 @@
-<section class="car-form-container">
-  <h2 class="car-form-title">Create a car</h2>
-  <form [formGroup]="postCarForm" (ngSubmit)="submitCar()" class="car-form">
+<section class="car-form-container" *ngIf="!!car">
+  <h2 class="car-form-title">Edit car</h2>
+  <form [formGroup]="editCarForm" (ngSubmit)="submitEdit()" class="car-form">
     <div class="car-form-second-container">
       <div class="car-form-first">
         <select
@@ -34,20 +34,12 @@
           <option>Suzuki</option>
           <option>Toyota</option>
         </select>
-        <ng-container
-          *ngIf="
-            postCarForm.controls['make'].touched &&
-            postCarForm.controls['make'].invalid
-          "
-        >
-          <p
-            *ngIf="postCarForm.controls['make'].errors?.required"
-            class="error"
-          >
+
+        <ng-container *ngIf="editCarForm.controls['make'].touched && editCarForm.controls['make'].invalid">
+          <p *ngIf="editCarForm.controls['make'].errors?.required" class="error">
             Make is required
           </p>
         </ng-container>
-
         <input
           formControlName="model"
           type="text"
@@ -55,20 +47,12 @@
           id="model"
           placeholder="Model"
         />
-        <ng-container
-          *ngIf="
-            postCarForm.controls['model'].touched &&
-            postCarForm.controls['model'].invalid
-          "
-        >
-          <p
-            *ngIf="postCarForm.controls['model'].errors?.required"
-            class="error"
-          >
+
+        <ng-container *ngIf="editCarForm.controls['model'].touched && editCarForm.controls['model'].invalid">
+          <p *ngIf="editCarForm.controls['model'].errors?.required" class="error">
             Model is required
           </p>
         </ng-container>
-
         <input
           formControlName="image"
           type="text"
@@ -77,16 +61,8 @@
           placeholder="Image"
         />
 
-        <ng-container
-          *ngIf="
-            postCarForm.controls['image'].touched &&
-            postCarForm.controls['image'].invalid
-          "
-        >
-          <p
-            *ngIf="postCarForm.controls['image'].errors?.required"
-            class="error"
-          >
+        <ng-container *ngIf="editCarForm.controls['image'].touched && editCarForm.controls['image'].invalid">
+          <p *ngIf="editCarForm.controls['image'].errors?.required" class="error">
             Image is required
           </p>
         </ng-container>
@@ -97,27 +73,19 @@
           id="price"
           placeholder="Price"
         />
-
-        <ng-container
-          *ngIf="
-            postCarForm.controls['price'].touched &&
-            postCarForm.controls['price'].invalid
-          "
-        >
-          <p
-            *ngIf="postCarForm.controls['price'].errors?.required"
-            class="error"
-          >
+        
+        <ng-container *ngIf="editCarForm.controls['price'].touched && editCarForm.controls['price'].invalid">
+          <p *ngIf="editCarForm.controls['price'].errors?.required" class="error">
             Price is required
           </p>
         </ng-container>
       </div>
       <div class="car-form-two">
         <select
-          formControlName="fuel"
           class="car-form-make"
           name="fuel"
           id="fuel"
+          formControlName="fuel"
         >
           <option>Fuel</option>
           <option>Petrol</option>
@@ -126,16 +94,8 @@
           <option>Hybrid</option>
         </select>
 
-        <ng-container
-          *ngIf="
-            postCarForm.controls['fuel'].touched &&
-            postCarForm.controls['fuel'].invalid
-          "
-        >
-          <p
-            *ngIf="postCarForm.controls['fuel'].errors?.required"
-            class="error"
-          >
+        <ng-container *ngIf="editCarForm.controls['fuel'].touched && editCarForm.controls['fuel'].invalid">
+          <p *ngIf="editCarForm.controls['fuel'].errors?.required" class="error">
             Fuel is required
           </p>
         </ng-container>
@@ -147,16 +107,8 @@
           placeholder="Color"
         />
 
-        <ng-container
-          *ngIf="
-            postCarForm.controls['color'].touched &&
-            postCarForm.controls['color'].invalid
-          "
-        >
-          <p
-            *ngIf="postCarForm.controls['color'].errors?.required"
-            class="error"
-          >
+        <ng-container *ngIf="editCarForm.controls['color'].touched && editCarForm.controls['color'].invalid">
+          <p *ngIf="editCarForm.controls['color'].errors?.required" class="error">
             Color is required
           </p>
         </ng-container>
@@ -168,16 +120,8 @@
           placeholder="Power"
         />
 
-        <ng-container
-          *ngIf="
-            postCarForm.controls['power'].touched &&
-            postCarForm.controls['power'].invalid
-          "
-        >
-          <p
-            *ngIf="postCarForm.controls['power'].errors?.required"
-            class="error"
-          >
+        <ng-container *ngIf="editCarForm.controls['power'].touched && editCarForm.controls['power'].invalid">
+          <p *ngIf="editCarForm.controls['power'].errors?.required" class="error">
             Power is required
           </p>
         </ng-container>
@@ -189,55 +133,35 @@
           placeholder="Year"
         />
 
-        <ng-container
-          *ngIf="
-            postCarForm.controls['year'].touched &&
-            postCarForm.controls['year'].invalid
-          "
-        >
-          <p
-            *ngIf="postCarForm.controls['year'].errors?.required"
-            class="error"
-          >
+        <ng-container *ngIf="editCarForm.controls['year'].touched && editCarForm.controls['year'].invalid">
+          <p *ngIf="editCarForm.controls['year'].errors?.required" class="error">
             Year is required
           </p>
         </ng-container>
       </div>
     </div>
+
     <article class="car-form-description">
       <textarea
         formControlName="description"
-        type="text"
+        type="number"
         name="description"
         id="description"
         placeholder="Description..."
       ></textarea>
 
-      <ng-container
-        *ngIf="
-          postCarForm.controls['description'].touched &&
-          postCarForm.controls['description'].invalid
-        "
-      >
-        <p
-          *ngIf="postCarForm.controls['description'].errors?.required"
-          class="error-desc"
-        >
+      <ng-container *ngIf="editCarForm.controls['description'].touched && editCarForm.controls['description'].invalid">
+        <p *ngIf="editCarForm.controls['description'].errors?.required" class="error-desc">
           Description is required
         </p>
-        <p
-          *ngIf="postCarForm.controls['description'].errors?.minlength"
-          class="error-desc"
-        >
+        <p *ngIf="editCarForm.controls['description'].errors?.minlength" class="error-desc">
           Description must be more than 10 characters!
         </p>
       </ng-container>
     </article>
-    <button
-      [ngClass]="postCarForm.invalid ? 'car-form-btn-disabled' : 'car-form-btn'"
-      [disabled]="postCarForm.invalid"
-    >
-      Create a car
-    </button>
+    <button [ngClass]="editCarForm.invalid ? 'car-form-btn-disabled' : 'car-form-btn'"
+    [disabled]="editCarForm.invalid" >Update</button>
   </form>
 </section>
+
+<app-loader *ngIf="loader"></app-loader>

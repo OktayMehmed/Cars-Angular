@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { MyCarsComponent } from './my-cars/my-cars.component';
 import { PostCarComponent } from './post-car/post-car.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditCarComponent } from './edit-car/edit-car.component';
 
 
 
@@ -17,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomePageComponent,
     CarDetailComponent,
     MyCarsComponent,
-    PostCarComponent
+    PostCarComponent,
+    EditCarComponent
   ],
   imports: [
     CommonModule,
