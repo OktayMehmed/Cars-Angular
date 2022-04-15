@@ -9,6 +9,7 @@ import { MyCarsComponent } from './my-cars/my-cars.component';
 import { PostCarComponent } from './post-car/post-car.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditCarComponent } from './edit-car/edit-car.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 
@@ -19,7 +20,8 @@ import { EditCarComponent } from './edit-car/edit-car.component';
     CarDetailComponent,
     MyCarsComponent,
     PostCarComponent,
-    EditCarComponent
+    EditCarComponent,
+    NotFoundComponent
   ],
   imports: [
     CommonModule,
