@@ -53,12 +53,13 @@
             Model is required
           </p>
         </ng-container>
+
         <input
+          type="file"
           formControlName="image"
-          type="text"
-          name="image"
-          id="image"
+          id="image-file"
           placeholder="Image"
+          (change)="uploadImage($event)"
         />
 
         <ng-container *ngIf="editCarForm.controls['image'].touched && editCarForm.controls['image'].invalid">
@@ -66,13 +67,6 @@
             Image is required
           </p>
         </ng-container>
-
-        <input
-          type="file"
-          id="image-file"
-          placeholder="Image"
-          (change)="uploadImage($event)"
-        />
         <input
           formControlName="price"
           type="number"

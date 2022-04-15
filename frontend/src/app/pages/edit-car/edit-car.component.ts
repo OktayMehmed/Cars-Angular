@@ -36,7 +36,7 @@ export class EditCarComponent implements OnInit {
         this.editCarForm = this.formBuilder.group({
           make: new FormControl(this.car.make, [Validators.required]),
           model: new FormControl(this.car.model, [Validators.required]),
-          image: new FormControl(this.car.image, [Validators.required]),
+          image: new FormControl(null, [Validators.required]),
           price: new FormControl(this.car.price, [Validators.required]),
           year: new FormControl(this.car.year, [Validators.required]),
           fuel: new FormControl(this.car.fuel, [Validators.required]),
