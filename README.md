@@ -6,10 +6,9 @@ Cars is platform for sale on new and used cars. You can browse many different ca
 
 * Express
 * MongoDB
-* React
-* React Router
-* React Hooks
-* Redux
+* NodeJS
+* Angular
+* RxJs
 * Styled with CSS
 * JWT for Authentication
 
